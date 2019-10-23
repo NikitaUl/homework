@@ -15,10 +15,16 @@ public class Starter {
         testList.add("test4");
         testList.add("test5");
 
+        List<String> testList2 = new ArrayList<String>();
+        testList2.add("test6");
+        testList2.add("test7");
+
         list.addAll(testList);
 
+        list.addAll(testList2);
+
         for (int i=0;i<list.size();i++){
-            System.out.printf(String.valueOf(list));
+            System.out.println(list.get(i));
         }
     }
 }
