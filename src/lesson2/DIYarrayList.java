@@ -78,6 +78,11 @@ public class DIYarrayList<T> implements List {
     }
 
 
+    static <T> void copy(List<? super T> dest, List<? extends T> src){
+           dest.addAll(src);
+    }
+
+
     @Override
     public boolean addAll(int index, Collection c) {
         throw  new UnsupportedOperationException();

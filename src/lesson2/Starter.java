@@ -23,8 +23,17 @@ public class Starter {
 
         list.addAll(testList2);
 
+        DIYarrayList.copy(list,testList);
+
         for (int i=0;i<list.size();i++){
             System.out.println(list.get(i));
+        }
+
+        List<String> list2 = new DIYarrayList<String>();
+        DIYarrayList.copy(list2,testList);
+
+        for (int i=0;i<list2.size();i++){
+            System.out.println(list2.get(i));
         }
     }
 }
