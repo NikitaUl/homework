@@ -82,6 +82,10 @@ public class DIYarrayList<T> implements List {
            dest.addAll(src);
     }
 
+    static <T> void sort(List<T> list, Comparator<? super T> c){
+
+    }
+
 
     @Override
     public boolean addAll(int index, Collection c) {
