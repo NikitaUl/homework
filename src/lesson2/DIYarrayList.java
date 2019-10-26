@@ -4,10 +4,12 @@ import java.util.*;
 
 public class DIYarrayList<T> implements List {
 
-
+    protected transient int modCount = 0;
     Object[] data = new Object[]{};
     private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
     private int size;
+    private int index;
+    private Object e;
 
     public DIYarrayList(){
 
@@ -78,14 +80,25 @@ public class DIYarrayList<T> implements List {
     }
 
 
-    static <T> void copy(List<? super T> dest, List<? extends T> src){
-           dest.addAll(src);
+
+
+    private T data(int index) {
+        return (T) data[index];
     }
 
-    static <T> void sort(List<T> list, Comparator<? super T> c){
-
+    private void checkForComodification() {
+        if (DIYarrayList.this.modCount != this.modCount)
+            throw new ConcurrentModificationException();
     }
 
+    private void rangeCheck(int index) {
+        if (index < 0 || index >= this.size)
+            throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+    }
+
+    private String outOfBoundsMsg(int index) {
+        return "Index: "+index+", Size: "+this.size;
+    }
 
     @Override
     public boolean addAll(int index, Collection c) {
@@ -105,7 +118,10 @@ public class DIYarrayList<T> implements List {
 
     @Override
     public Object set(int index, Object element) {
-        throw  new UnsupportedOperationException();
+        rangeCheck(index);
+        T oldValue = DIYarrayList.this.data(index);
+        DIYarrayList.this.data[index] = element;
+        return oldValue;
     }
 
     @Override

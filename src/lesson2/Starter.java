@@ -9,6 +9,7 @@ public class Starter {
     public static void main(String[] args) {
         List<String> list = new DIYarrayList<String>();
 
+
         List<String> testList = new ArrayList<String>();
         testList.add("test1");
         testList.add("test2");
@@ -22,19 +23,13 @@ public class Starter {
 
         list.addAll(testList);
 
-        list.addAll(testList2);
+        //list.addAll(testList2);
 
-        DIYarrayList.copy(list,testList);
+        Collections.copy(list,testList2);
 
         for (int i=0;i<list.size();i++){
             System.out.println(list.get(i));
         }
 
-        List<String> list2 = new DIYarrayList<String>();
-        DIYarrayList.copy(list2,testList);
-
-        for (int i=0;i<list2.size();i++){
-            System.out.println(list2.get(i));
-        }
     }
 }
