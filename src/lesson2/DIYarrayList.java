@@ -178,4 +178,13 @@ public class DIYarrayList<T> implements List {
     public Object[] toArray(Object[] a) {
         throw  new UnsupportedOperationException();
     }
+
+    public void sort(Comparator c) {
+        final int expectedModCount = modCount;
+        Arrays.sort(data, 0, size, c);
+        if (modCount != expectedModCount) {
+            throw new ConcurrentModificationException();
+        }
+        modCount++;
+    }
 }
