@@ -73,8 +73,6 @@ public class DIYarrayList<T> implements List {
         }
 
         this.data = arr;
-        //this.data = Arrays.copyOf(arr, arr.length);
-        //System.arraycopy(a,0,this.data,0,1);
         this.size = arr.length;
         return this.data.length > 0;
     }
